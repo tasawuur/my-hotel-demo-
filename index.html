@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Walnut Homestay · Pahalgam, Kashmir</title>
+<meta name="description" content="A family-run homestay in Pahalgam, Kashmir. Warm rooms, home-cooked Kashmiri food and the Lidder river at your doorstep.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#1d3a34;
+    --pine-deep:#12261f;
+    --walnut:#5a3d2b;
+    --river:#6f8f95;
+    --snow:#f2f5f4;
+    --mist:#dfe8e7;
+    --blossom:#c9788d;
+    --ink:#1b2422;
+    --serif:'Newsreader',Georgia,serif;
+    --sans:'Figtree',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--snow);line-height:1.65;font-size:17px}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--blossom);outline-offset:3px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* Nav */
+  header{position:absolute;top:0;left:0;right:0;z-index:5}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;max-width:1080px;margin:0 auto;color:#fff}
+  .logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;text-decoration:none}
+  nav ul{display:flex;gap:26px;list-style:none;font-size:.95rem}
+  nav ul a{text-decoration:none;opacity:.9}
+  nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+
+  /* Hero */
+  .hero{position:relative;background:linear-gradient(180deg,#9db8bd 0%,#cfdcdc 55%,#e9eeed 100%);color:#fff;overflow:hidden;min-height:92vh;display:flex;align-items:flex-end}
+  .hero svg{position:absolute;bottom:0;left:0;width:100%;height:78%}
+  .hero-text{position:relative;z-index:2;padding:0 24px 20vh;max-width:1080px;margin:0 auto;width:100%}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.05;max-width:13ch;color:#fff;text-shadow:0 2px 30px rgba(18,38,31,.35)}
+  .hero p{margin-top:20px;max-width:46ch;font-size:1.12rem;color:#f4f8f7;text-shadow:0 1px 14px rgba(18,38,31,.45)}
+  .btn{display:inline-block;margin-top:28px;padding:14px 28px;background:var(--blossom);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;border:0;font:inherit;font-weight:600;cursor:pointer}
+  .btn:hover{background:#b8667b}
+  .btn.ghost{background:transparent;border:1.5px solid currentColor;margin-left:10px}
+
+  /* Sections */
+  section{padding:88px 0}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;color:var(--pine);margin-bottom:22px}
+  .about{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+  .about p+p{margin-top:16px}
+  .facts{list-style:none;border-left:3px solid var(--river);padding-left:24px;display:grid;gap:18px}
+  .facts strong{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--walnut);font-weight:600}
+
+  .rooms{background:var(--mist)}
+  .room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:36px}
+  .room{background:var(--snow);border-top:6px solid var(--walnut);padding:28px}
+  .room:nth-child(2){border-top-color:var(--pine)}
+  .room:nth-child(3){border-top-color:var(--river)}
+  .room h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--pine);margin-bottom:6px}
+  .room .price{font-weight:600;color:var(--walnut);margin-bottom:12px}
+  .room ul{padding-left:18px;font-size:.96rem}
+
+  .stay{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:36px;margin-top:30px}
+  .stay h3{font-family:var(--serif);font-size:1.3rem;color:var(--walnut);margin-bottom:6px}
+
+
+  /* Photos */
+  .thumb,.g-item{display:block;width:100%;padding:0;border:0;background:var(--river);cursor:zoom-in;position:relative;overflow:hidden;font:inherit;color:#fff}
+  .thumb{aspect-ratio:3/2;margin:-28px -28px 20px;width:calc(100% + 56px)}
+  .thumb img,.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .thumb:hover img,.g-item:hover img{transform:scale(1.04)}
+  .thumb .count{position:absolute;right:10px;bottom:10px;background:rgba(18,38,31,.8);padding:3px 11px;border-radius:999px;font-size:.82rem}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+  .g-item{aspect-ratio:4/3}
+  .g-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .g-item span{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 11px;text-align:left;font-size:.95rem;background:linear-gradient(transparent,rgba(18,38,31,.78))}
+  .lb{position:fixed;inset:0;background:rgba(10,20,16,.94);z-index:50;display:none;align-items:center;justify-content:center;flex-direction:column;padding:56px 16px 24px}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:calc(100vh - 150px);object-fit:contain;border-radius:4px}
+  .lb-cap{color:#e6efec;margin-top:14px;text-align:center}
+  .lb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;width:46px;height:46px;border-radius:50%;font-size:1.5rem;cursor:pointer}
+  .lb button:hover{background:rgba(255,255,255,.25)}
+  .lb .x{top:14px;right:14px}
+  .lb .prev{left:14px;top:50%}
+  .lb .next{right:14px;top:50%}
+
+  /* Contact */
+  .contact{background:var(--pine-deep);color:var(--snow)}
+  .contact h2{color:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+  .contact a{color:#fff}
+  form{display:grid;gap:14px}
+  label{font-size:.9rem;display:grid;gap:5px}
+  input,select,textarea{font:inherit;padding:11px 13px;border:1px solid #476259;background:#1b3a31;color:#fff;border-radius:6px;width:100%}
+  input::placeholder,textarea::placeholder{color:#9db3ab}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .note{font-size:.85rem;color:#a8bdb5}
+
+  footer{background:#0c1a15;color:#8fa59d;text-align:center;padding:26px 24px;font-size:.88rem}
+
+  @media (max-width:760px){
+    .about,.contact-grid{grid-template-columns:1fr;gap:36px}
+    nav ul{gap:16px;font-size:.88rem}
+    .two{grid-template-columns:1fr}
+    section{padding:64px 0}
+    .btn.ghost{margin-left:0}
+    .gallery-grid{grid-template-columns:1fr 1fr}
+    .g-item:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="#top">The Walnut Homestay</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#stay">Your stay</a></li>
+      <li><a href="#contact">Book</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <!-- Mountain ridges drawn in SVG. Replace with a real photo later:
+         remove the <svg> and set .hero { background: url(photo.jpg) center/cover; } -->
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 330 L160 190 L260 260 L430 90 L560 230 L700 150 L860 280 L1010 120 L1180 250 L1300 180 L1440 270 L1440 600 L0 600Z" fill="#b9ccce"/>
+      <path d="M0 400 L140 300 L300 370 L470 230 L640 360 L800 270 L980 380 L1150 260 L1300 340 L1440 290 L1440 600 L0 600Z" fill="#7f9fa4"/>
+      <path d="M0 480 L180 400 L340 470 L520 380 L700 470 L880 400 L1060 480 L1240 410 L1440 470 L1440 600 L0 600Z" fill="#2f5249"/>
+      <path d="M0 540 L220 490 L420 540 L640 495 L860 545 L1080 500 L1260 545 L1440 510 L1440 600 L0 600Z" fill="#1d3a34"/>
+    </svg>
+    <div class="hero-text">
+      <h1>Wake up to the Lidder river</h1>
+      <p>A family-run homestay in Pahalgam. Warm rooms, Kashmiri meals cooked in our own kitchen, and hosts who know every trail.</p>
+      <a class="btn" href="#contact">Check availability</a>
+      <a class="btn ghost" href="#rooms">See rooms</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>A home first, a hotel second</h2>
+        <p>The Walnut Homestay sits in Pahalgam, the valley of shepherds, where the Lidder river runs past pine forests and meadows. We run it the way we would host family: you are greeted at the door, shown to a warm room and offered kahwa before anything else.</p>
+        <p>We speak Kashmiri, Urdu, Hindi and English, so whether you need help planning a day trip to Betaab Valley or a quiet corner to read, just ask.</p>
+      </div>
+      <ul class="facts">
+        <li><strong>Home-cooked meals</strong>Wazwan dishes, fresh bread and breakfast made to order.</li>
+        <li><strong>Heated rooms</strong>Warm through the cold months, with hot water on demand.</li>
+        <li><strong>Local planning</strong>Taxis, ponies, guides and trek routes arranged by us.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="rooms" class="rooms">
+    <div class="wrap">
+      <h2>Rooms</h2>
+      <p>Simple, clean and warm. Rates are per night for the room; edit these to match your own.</p>
+      <div class="room-grid">
+        <article class="room">
+          <button class="thumb" data-room="valley" aria-label="View photos of the Valley Room"></button>
+          <h3>Valley Room</h3>
+          <div class="price">₹2,500 / night</div>
+          <ul><li>Double bed, sleeps 2</li><li>Window facing the mountains</li><li>Attached bathroom, hot water</li></ul>
+        </article>
+        <article class="room">
+          <button class="thumb" data-room="family" aria-label="View photos of the Family Room"></button>
+          <h3>Family Room</h3>
+          <div class="price">₹3,800 / night</div>
+          <ul><li>Two beds, sleeps 4</li><li>Extra seating area</li><li>Attached bathroom, room heater</li></ul>
+        </article>
+        <article class="room">
+          <button class="thumb" data-room="river" aria-label="View photos of the Riverside Room"></button>
+          <h3>Riverside Room</h3>
+          <div class="price">₹3,200 / night</div>
+          <ul><li>Double bed, sleeps 2</li><li>Balcony toward the river</li><li>Attached bathroom, room heater</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <h2>Around Pahalgam</h2>
+      <p>Mountains, meadows and the Lidder river, all within a short drive. Tap any photo to enlarge it.</p>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section id="stay">
+    <div class="wrap">
+      <h2>Your stay</h2>
+      <div class="stay">
+        <div><h3>Check-in and check-out</h3><p>Check-in from 12:00 noon. Check-out by 11:00 am. Early arrivals are welcome to leave bags with us and have tea.</p></div>
+        <div><h3>Getting here</h3><p>We are in Pahalgam town. Tell us your arrival time from Srinagar and we can arrange a pickup.</p></div>
+        <div><h3>Around Pahalgam</h3><p>Aru Valley, Betaab Valley, Chandanwari and the Baisaran meadow are all a short drive away.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Book your stay</h2>
+        <p>Send your dates and we reply on WhatsApp, usually within a few hours.</p>
+        <p style="margin-top:22px"><strong>WhatsApp / Phone</strong><br><a href="tel:+910000000000">+91 00000 00000</a></p>
+        <p style="margin-top:14px"><strong>Email</strong><br><a href="mailto:hello@example.com">hello@example.com</a></p>
+        <p style="margin-top:14px"><strong>Address</strong><br>The Walnut Homestay, Pahalgam, Jammu &amp; Kashmir</p>
+      </div>
+      <form id="bookingForm">
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <div class="two">
+          <label>Check-in<input type="date" name="checkin" required></label>
+          <label>Check-out<input type="date" name="checkout" required></label>
+        </div>
+        <div class="two">
+          <label>Room
+            <select name="room">
+              <option>Valley Room</option>
+              <option>Family Room</option>
+              <option>Riverside Room</option>
+            </select>
+          </label>
+          <label>Guests<input type="number" name="guests" min="1" max="10" value="2" required></label>
+        </div>
+        <label>Anything we should know?<textarea name="msg" rows="3" placeholder="Arrival time, food preferences, pickup request"></textarea></label>
+        <button class="btn" type="submit" style="margin-top:6px">Send on WhatsApp</button>
+        <p class="note">This opens WhatsApp with your details filled in. Nothing is stored on this website.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr"></span> The Walnut Homestay, Pahalgam</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous photo">&#8249;</button>
+  <img id="lbImg" alt="">
+  <button class="next" aria-label="Next photo">&#8250;</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+  // EDIT THIS: your WhatsApp number, country code first, digits only (no + or spaces)
+  const WHATSAPP_NUMBER = "910000000000";
+
+
+  // ---------- PHOTOS ----------
+  // Put your own photos in an "images" folder next to index.html and keep these file names
+  // (or change the names below). Until a file exists, a coloured placeholder is shown.
+  const PLACES = [
+    {src:"images/lidder-river.jpg",  title:"Lidder river",          hue:195, kind:"river"},
+    {src:"images/betaab-valley.jpg", title:"Betaab Valley",         hue:140, kind:"valley"},
+    {src:"images/aru-valley.jpg",    title:"Aru Valley",            hue:160, kind:"aru"},
+    {src:"images/baisaran.jpg",      title:"Baisaran meadow",       hue:100, kind:"meadow"},
+    {src:"images/chandanwari.jpg",   title:"Chandanwari snow",      hue:205, kind:"snow"},
+    {src:"images/pine-forest.jpg",   title:"Pine forest near town", hue:150, kind:"forest"}
+  ];
+  const ROOMS = {
+    valley:{title:"Valley Room",     hue:25,  kind:"room",  files:["images/valley-room-1.jpg","images/valley-room-2.jpg","images/valley-room-3.jpg"]},
+    family:{title:"Family Room",     hue:35,  kind:"room",  files:["images/family-room-1.jpg","images/family-room-2.jpg","images/family-room-3.jpg"]},
+    river: {title:"Riverside Room",  hue:200, kind:"room", files:["images/riverside-room-1.jpg","images/riverside-room-2.jpg","images/riverside-room-3.jpg"]}
+  };
+
+  function pines(xs, base, h, fill){
+    return xs.map(([x,sc]) => { const w=h*sc*.45, t=h*sc; return `<polygon points="${x},${base-t} ${x-w},${base} ${x+w},${base}" fill="${fill}"/><rect x="${x-4}" y="${base}" width="8" height="${t*.12}" fill="#3b2a20"/>`; }).join("");
+  }
+  function scene(item){
+    const k = item.kind;
+    let body = "";
+    const sky = (a,b) => `<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="1200" height="800" fill="url(#s)"/>`;
+    if(k==="river"){
+      body = sky("#8db4cf","#dbe8ee")
+        + `<polygon points="0,420 200,220 330,330 560,130 760,320 940,200 1200,380 1200,800 0,800" fill="#8fa6b4"/><polygon points="560,130 500,200 540,190 580,230 620,190" fill="#fff" opacity=".8"/>`
+        + `<polygon points="0,520 300,400 600,500 900,390 1200,500 1200,800 0,800" fill="#3e6b54"/>`
+        + pines([60,150,240,980,1070,1150],560,170,"#244a3a")
+        + `<path d="M470 800 C520 700 400 640 520 560 C600 510 660 520 700 520 C780 560 700 640 820 700 C880 740 920 770 960 800Z" fill="#9fcfe0"/><path d="M560 760 C600 700 540 660 600 600" stroke="#fff" stroke-width="6" fill="none" opacity=".6"/><path d="M700 740 C730 700 690 670 730 630" stroke="#fff" stroke-width="5" fill="none" opacity=".5"/>`
+        + `<ellipse cx="300" cy="720" rx="90" ry="38" fill="#6b6460"/><ellipse cx="1000" cy="740" rx="120" ry="44" fill="#7a736d"/><ellipse cx="180" cy="770" rx="60" ry="26" fill="#58524e"/>`;
+    } else if(k==="valley"){
+      body = sky("#a9cfe6","#eef6f3")
+        + `<polygon points="0,380 260,200 420,300 700,150 960,310 1200,230 1200,800 0,800" fill="#8ea8b5"/>`
+        + `<path d="M0 470 Q300 360 600 470 T1200 440 L1200 800 L0 800Z" fill="#5f9a62"/><path d="M0 600 Q400 520 800 620 T1200 580 L1200 800 L0 800Z" fill="#4a8a4f"/>`
+        + pines([90,170,1040,1120,1170],520,200,"#2c5a3f")
+        + `<path d="M520 800 Q600 700 560 620 Q540 580 600 540" stroke="#cfe6ee" stroke-width="40" fill="none" stroke-linecap="round"/>`;
+    } else if(k==="aru"){
+      body = sky("#9fc7e2","#f3f7f5")
+        + `<polygon points="0,400 150,240 300,340 540,110 760,330 980,170 1200,360 1200,800 0,800" fill="#9bb0bd"/><polygon points="540,110 470,200 520,190 560,240 610,190" fill="#fff" opacity=".85"/><polygon points="980,170 920,240 960,232 1000,270" fill="#fff" opacity=".85"/>`
+        + `<path d="M0 520 Q260 430 520 520 T1200 480 L1200 800 L0 800Z" fill="#6fa86a"/>`
+        + `<circle cx="300" cy="640" r="5" fill="#fff"/><circle cx="420" cy="690" r="5" fill="#f4e04d"/><circle cx="760" cy="650" r="5" fill="#fff"/><circle cx="900" cy="700" r="5" fill="#f4e04d"/>`
+        + `<rect x="620" y="600" width="90" height="60" fill="#7a5a3f"/><polygon points="610,600 665,555 720,600" fill="#4a3426"/>`
+        + pines([100,190,280,1050,1130],560,190,"#2a5640");
+    } else if(k==="meadow"){
+      body = sky("#7fb4dc","#e8f3ee")
+        + `<path d="M0 360 Q200 300 400 350 T800 340 T1200 360 L1200 800 L0 800Z" fill="#315f48"/>`
+        + pines([30,100,170,240,310,380,450,520,590,660,730,800,870,940,1010,1080,1150],390,120,"#1f4a38")
+        + `<path d="M0 420 Q400 380 800 430 T1200 410 L1200 800 L0 800Z" fill="#7bb85a"/><path d="M0 560 Q500 500 1200 580 L1200 800 L0 800Z" fill="#69a84b"/>`
+        + `<rect x="840" y="470" width="70" height="46" fill="#8a6446"/><polygon points="830,470 875,432 920,470" fill="#5a3d2b"/>`
+        + `<ellipse cx="300" cy="650" rx="120" ry="14" fill="#5c9640"/>`;
+    } else if(k==="snow"){
+      body = sky("#bcd3e6","#f4f8fb")
+        + `<polygon points="0,420 220,230 380,340 640,150 880,330 1060,220 1200,330 1200,800 0,800" fill="#dbe6ee"/><polygon points="640,150 520,300 600,280 660,340 760,270" fill="#fff"/>`
+        + `<path d="M0 520 Q300 460 600 540 T1200 500 L1200 800 L0 800Z" fill="#f7fafc"/><path d="M0 650 Q400 600 800 670 T1200 640 L1200 800 L0 800Z" fill="#fff"/>`
+        + pines([120,200,980,1060],560,190,"#3d6a59")
+        + `<path d="M560 800 Q640 700 600 640" stroke="#b9d7e8" stroke-width="38" fill="none" stroke-linecap="round"/>`;
+    } else if(k==="forest"){
+      body = sky("#7fa38f","#cfdcd2")
+        + pines([60,200,340,480,620,760,900,1040,1160],520,330,"#2c5a3f")
+        + pines([130,270,410,550,690,830,970,1100],640,380,"#1d4a35")
+        + `<rect y="640" width="1200" height="160" fill="#2f4a2f"/>`
+        + pines([20,300,600,900,1180],800,420,"#12301f");
+    } else { // room
+      const n = item.n||0;
+      const blanket = ["#9a4a3c","#2f5a64","#b08a3e"][n%3];
+      const wall = ["#e8dcc8","#dfe6e3","#ecdfd0"][n%3];
+      const winx = [760,160,480][n%3];
+      body = `<rect width="1200" height="800" fill="${wall}"/><rect y="560" width="1200" height="240" fill="#8b6a4a"/><rect y="556" width="1200" height="10" fill="#6f533a"/>`
+        + `<rect x="${winx}" y="120" width="280" height="270" fill="#4a3426"/><rect x="${winx+14}" y="134" width="252" height="242" fill="#a9cfe6"/><polygon points="${winx+14},300 ${winx+90},200 ${winx+150},270 ${winx+200},190 ${winx+266},300 ${winx+266},376 ${winx+14},376" fill="#6f8f95"/><rect x="${winx+138}" y="134" width="6" height="242" fill="#4a3426"/>`
+        + `<rect x="${n===1?640:200}" y="400" width="420" height="190" rx="10" fill="#5a3d2b"/><rect x="${n===1?650:210}" y="360" width="400" height="60" rx="14" fill="#f4efe6"/><rect x="${n===1?660:220}" y="430" width="380" height="140" rx="12" fill="${blanket}"/><rect x="${n===1?680:240}" y="372" width="150" height="50" rx="12" fill="#fff"/><rect x="${n===1?870:430}" y="372" width="150" height="50" rx="12" fill="#fff"/>`
+        + `<rect x="${n===1?1000:760}" y="470" width="90" height="100" fill="#6f4a33"/><rect x="${n===1?1030:790}" y="410" width="30" height="62" fill="#e9c46a"/><polygon points="${n===1?1020:780},412 ${n===1?1070:830},412 ${n===1?1060:820},380 ${n===1?1030:790},380" fill="#f4e4b0"/>`
+        + `<rect x="60" y="600" width="1080" height="14" fill="#a8825d" opacity=".5"/>`
+        + (item.room==="family" ? `<rect x="${n===1?240:760}" y="300" width="120" height="80" fill="#7a5a3f"/>` : "");
+    }
+    return body;
+  }
+  function placeholder(item){
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">${scene(item)}<rect x="0" y="752" width="1200" height="48" fill="rgba(18,38,31,.62)"/><text x="600" y="783" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#fff">Demo illustration. Replace with your photo: ${item.src}</text></svg>`;
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+  function setImg(img, item){
+    img.alt = item.title;
+    img.onerror = () => { img.onerror = null; img.src = placeholder(item); };
+    img.src = item.src;
+  }
+
+  // Gallery grid
+  const grid = document.getElementById("galleryGrid");
+  PLACES.forEach((item,i) => {
+    const b = document.createElement("button");
+    b.className = "g-item";
+    b.setAttribute("aria-label","Enlarge photo: " + item.title);
+    const img = document.createElement("img"); img.loading = "lazy"; setImg(img,item);
+    const cap = document.createElement("span"); cap.textContent = item.title;
+    b.append(img,cap);
+    b.addEventListener("click", () => openLb(PLACES, i, b));
+    grid.appendChild(b);
+  });
+
+  // Room thumbnails
+  document.querySelectorAll(".thumb").forEach(b => {
+    const r = ROOMS[b.dataset.room];
+    const items = r.files.map((f,i) => ({src:f, title:`${r.title}, photo ${i+1}`, hue:r.hue, kind:"room", n:i, room:b.dataset.room}));
+    const img = document.createElement("img"); img.loading = "lazy"; setImg(img, items[0]);
+    const count = document.createElement("span"); count.className = "count"; count.textContent = items.length + " photos";
+    b.append(img,count);
+    b.addEventListener("click", () => openLb(items, 0, b));
+  });
+
+  // Lightbox
+  const lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+  let list = [], idx = 0, opener = null;
+  function show(){ setImg(lbImg, list[idx]); lbCap.textContent = list[idx].title + (list.length > 1 ? `  (${idx+1} of ${list.length})` : ""); }
+  function openLb(items, i, from){ list = items; idx = i; opener = from; show(); lb.classList.add("open"); document.body.style.overflow = "hidden"; lb.querySelector(".x").focus(); }
+  function closeLb(){ lb.classList.remove("open"); document.body.style.overflow = ""; if(opener) opener.focus(); }
+  function step(d){ idx = (idx + d + list.length) % list.length; show(); }
+  lb.querySelector(".x").addEventListener("click", closeLb);
+  lb.querySelector(".prev").addEventListener("click", () => step(-1));
+  lb.querySelector(".next").addEventListener("click", () => step(1));
+  lb.addEventListener("click", e => { if(e.target === lb) closeLb(); });
+  document.addEventListener("keydown", e => {
+    if(!lb.classList.contains("open")) return;
+    if(e.key === "Escape") closeLb();
+    if(e.key === "ArrowLeft") step(-1);
+    if(e.key === "ArrowRight") step(1);
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  const today = new Date().toISOString().split("T")[0];
+  const form = document.getElementById("bookingForm");
+  form.checkin.min = today;
+  form.checkin.addEventListener("change", () => { form.checkout.min = form.checkin.value; });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const text =
+      `Hello, I would like to book at The Walnut Homestay.\n` +
+      `Name: ${d.get("name")}\n` +
+      `Check-in: ${d.get("checkin")}\n` +
+      `Check-out: ${d.get("checkout")}\n` +
+      `Room: ${d.get("room")}\n` +
+      `Guests: ${d.get("guests")}\n` +
+      (d.get("msg") ? `Note: ${d.get("msg")}` : "");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+  });
+</script>
+</body>
+</html>
